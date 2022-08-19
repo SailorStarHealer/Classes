@@ -11,15 +11,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        var locations = new List<Location>();
+         var locations = new List<Location>();
 
-        var winterfell = new Location();
+        var winterfell = new Location
+        {
+            Name = "Winterfell",
+            Description = "the capital of the Kingdom of the North"
 
-        winterfell.Name = "Winterfell";
-        winterfell.Description = "the capital of the Kingdom of the North";
+        };
 
-        locations.Add(winterfell);
-
+ 
         var pyke = new Location
         {
             Name = "Pyke",
@@ -57,7 +58,6 @@ class Program
         ConnectLocations(riverrun, pyke);
         ConnectLocations(riverrun, kingslanding);
         ConnectLocations(riverrun, highgarden);
-        ConnectLocations(riverrun, kingslanding);
 
         locations.Add(pyke);
 
@@ -91,8 +91,6 @@ class Program
 
         var travel = 0;
 
-        var location = currentLocation;
-
         Console.WriteLine($"Welcome to {currentLocation.Name}. {currentLocation.Description}");
 
         foreach (Location Neighbors in currentLocation.Neighbors)
@@ -104,11 +102,14 @@ class Program
 
         Console.WriteLine("Where would you like to travel to?");
 
+        //Try + Catch is a block like an if/else statement. 'Try' is the
+        //instruction that 'should' be carried out. 'Catch' gives he instruction of what to do if 'try' was not carried out.
+
         try
         {
             travel = Convert.ToInt32(Console.ReadLine());
+            currentLocation = (currentLocation.Neighbors[travel - 1]);
         }
-
 
         catch (Exception ex)
         {
@@ -118,7 +119,7 @@ class Program
         Console.WriteLine(travel);
 
 
-            currentLocation = (currentLocation.Neighbors[travel - 1]);
+             
 
         Place(currentLocation);
    
