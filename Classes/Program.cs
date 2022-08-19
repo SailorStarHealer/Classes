@@ -77,14 +77,14 @@ class Program
         ConnectLocations(kingslanding, highgarden);
 
 
-        Location(winterfell);
+        Place(winterfell);
 
 
 
     }
     //Displays name & description of the designated parameter. Displays locations that are closeby. Asks for input.
     //If the inputted int corresponds to one of the neighbors, 'currentlocation' is replaced by the neighbor.
-    static void Location(Location currentLocation)
+    static void Place(Location currentLocation)
     {
 
         int counter = 0;
@@ -117,29 +117,20 @@ class Program
 
         Console.WriteLine(travel);
 
-        currentLocation = (currentLocation.Neighbors[travel - 1]);
 
-        Location(currentLocation);
+            currentLocation = (currentLocation.Neighbors[travel - 1]);
+
+        Place(currentLocation);
    
     }
 
     static void ConnectLocations(Location a, Location b)
     {
-        //Add a to b's list of neighbors.
 
         a.Neighbors.Add(b);
         b.Neighbors.Add(a);
 
-        //Add location a to location b
-
     }
-    // static void Journey(Travella)
-
-    // {
-    //    return 
-
-    //}
-
 
 }
 
